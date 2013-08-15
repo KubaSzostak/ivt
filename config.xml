@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+    xmlns:gap = "http://phonegap.com/ns/1.0"
+    id        = "com.novotive.ivt"
+    versionCode="130815"
+    version   = "1.4.815">
+
+  <!-- versionCode is optional and Android only -->
+
+  <name>IVT</name>
+
+  <description><![CDATA[Irregular Verbs Trainer
+When You enter correct verb forms IVT goes further and give You next verb to test. But when You enter incorrect verb forms IVT add two repetitions of this verb: 
+  1.first verb close to Your lerning position (after two or three other verbs to learn) 
+  2.second verb at end of lesson 
+If You remember valid verb forms for a while, but forgot it at the end - You have another two repetitions. There is no way to leave lesson without new verb forms deep in Your memory :)
+]]>    
+  </description>
+
+  <author href="https://novotive.com" email="info@novotive.com">
+    Novotive
+  </author>
+  
+  <icon src="icon.png" />
+  <preference name="permissions" value="none"/>
+
+</widget>

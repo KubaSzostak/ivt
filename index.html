@@ -1,79 +1,168 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Ivt : Irregular verbs trainer" />
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>IVT - Irregular Verbs Trainer</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" href="js/jquery.mobile-1.3.2.min.css" />
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.mobile-1.3.2.min.js"></script>
 
-    <title>Ivt</title>
-  </head>
-
-  <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/kubaszostak/ivt">View on GitHub</a>
-
-          <h1 id="project_title">Ivt</h1>
-          <h2 id="project_tagline">Irregular verbs trainer</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/kubaszostak/ivt/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/kubaszostak/ivt/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
+    <script src="ivt.js"></script>
+    <script src="phonegap.js"></script>
+</head>
+<body>
+    <div data-role="page" id="config">
+        <div data-role="header"  data-position="fixed">
+            <h2>Irregular Verbs Trainer</h2>
+        </div>
+        <div data-role="content">
+            <h3>Start</h3>
+            <div data-role="fieldcontain">
+                <label>Count of verbs to learn &nbsp;</label>
+                <input id="verbsToLearnBox" type="text" value="10" data-inline="true"
+                    onkeydown="if (event.keyCode == 13) document.getElementById('startNewLessonButton').click()" />
+            </div>
+            <div>
+                <a id="startNewLessonButton" href="#lesson" data-role="button"
+                    data-inline="true" data-transition="slide">Start new lesson</a>
+            </div>
+            <hr />
+            <h3>How it works</h3>
+            <p>
+                When You enter correct <em>verb</em> forms IVT goes further and give You next verb to test.
+                But when You enter incorrect <em>verb forms</em> IVT add two repetitions of this <em>verb</em>: 
+            </p>
+            <ol>
+                <li>first <em>verb</em> close to Your lerning position (after two or three other <em>verbs</em> to learn)</li>
+                <li>second <em>verb</em> at end of lesson</li>
+            </ol>
+            <p>
+               If You remember valid <em>verb forms</em> for a while,
+                but forgot it at the end - You have another two repetitions. There is no way
+                to leave lesson without new <em>verb forms</em> deep in Your memory :)
+            </p>
+        </div>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+    <div data-role="page" id="lesson">
+        <div data-role="header" data-position="fixed">
+            <a href="#config" data-icon="delete" data-direction="reverse" data-transition="slide">Cancel</a>
+            <h2>Irregular Verbs Trainer</h2>
+        </div>
+        <div data-role="content">
+            <h3>Lesson</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+            <div id="responseSection" style="margin-bottom: 16px;">
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+                <div>
+                    <label>Verb: </label>
+                    <label id="verbLabel" style="font-weight: bold">rise</label>
+                    <label style="color: #666666">(<label id="verbNativeLabel">rosnąć</label>)</label>
+                </div>
+                <div>
+                    <label id="verbInfo"></label>
+                </div>
+                <hr />
+                <p>Enter valid verb forms</p>
+                <div class="ui-grid-b ui-responsive">
+                    <div class="ui-block-a" style="padding-right: 1em;">
+                        <label id="verbForm1Label" style="color: gray;"></label>
+                        <input id="verbForm1Box" type="text" onkeydown="if (event.keyCode == 13) document.getElementById('nextVerbButton').click()" />
+                    </div>
+                    <div class="ui-block-b" style="padding-right: 1em;">
+                        <label id="verbForm2Label" style="color: gray;"></label>
+                        <input id="verbForm2Box" type="text" onkeydown="if (event.keyCode == 13) document.getElementById('nextVerbButton').click()" />
+                    </div>
+                    <div class="ui-block-c" style="padding-right: 1em;">
+                        <label id="verbForm3Label" style="color: gray;"></label>
+                        <input id="verbForm3Box" type="text" onkeydown="if (event.keyCode == 13) document.getElementById('nextVerbButton').click()" />
+                    </div>
+                </div>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+                <div>
+                </div>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+                <div style="clear: both">
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+                    <a id="nextVerbButton" onclick="ivt.goToNextVerb();" data-role="button" data-inline="true" data-icon="arrow-r">Next</a>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+                </div>
+                <p>
+                    <label>Attempt number: </label>
+                    <label style="font-weight: 700" id="verbNumberLabel">2</label>
+                    of
+            <label id="verbCountLabel">48</label>
+                    <label style="color: #666666">
+                        (
+                <label title="Verbs to learn" id="verbToLearnLabel">18</label>
+                        +
+                <label title="Repetitions" id="verbRepetitionsLabel">2</label>)
+                    </label>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+                </p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+            </div>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
+            <div id="verbsTable"></div>
+        </div>
+
     </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Ivt maintained by <a href="https://github.com/kubaszostak">kubaszostak</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
+
+    <div data-role="page" id="results">
+        <div data-role="header" data-position="fixed">
+            <a href="#config" data-icon="delete" data-direction="reverse" data-transition="slide">Close</a>
+            <h2>Irregular Verbs Trainer</h2>
+        </div>
+        <div data-role="content">
+            <h3>Results</h3>
+
+            <table data-role="table" id="results-table" data-mode="reflow" class="ui-responsive table-stroke">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Verb</th>
+                        <th>Answers</th>
+                        <th>Valid Answers</th>
+                        <th>Wrong Answers</th>
+                        <th>Repetitions</th>
+                    </tr>
+                </thead>
+                <tbody id="results-table-body">
+                    <tr>
+                        <th>1</th>
+                        <td>to be</td>
+                        <td>2</td>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <td>sleep</td>
+                        <td>1942</td>
+                        <td>5</td>
+                        <td>97%</td>
+                        <td>64</td>
+                    </tr>
+                    <tr>
+                        <th>9</th>
+                        <td>build</td>
+                        <td>1952</td>
+                        <td>5</td>
+                        <td>89%</td>
+                        <td>85</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
     </div>
-
-    
-
-  </body>
+</body>
 </html>
