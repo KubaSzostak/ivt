@@ -1,7 +1,6 @@
 ﻿
 
 declare var jQuery;
-// dev branch test (gh-change)
 
 // Module
 module ivt {
@@ -290,7 +289,7 @@ module ivt {
             clearAnswers();
             currentVerb++;
             if (currentVerb > learnVerbList.length - 1)
-                jQuery.mobile.changePage("#results", { transition: "slide" });
+                jQuery.mobile.changePage("#results", { transition: "slide", changeHash: false});
             else {
                 setVerb(learnVerbList[currentVerb]);
                 updateProgressView();
@@ -402,7 +401,7 @@ module ivt {
 }
 
 jQuery(document).ready(function () {
-    // nothing to do
+    jQuery.mobile.changePage.defaults.changeHash = false;
 });
 
 jQuery(document).on("pagebeforeshow", "#lesson", function (event) {
