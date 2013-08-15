@@ -36,7 +36,7 @@ module ivt {
         }
 
         function getAllVerbs() {
-            var res = new Array<ivt.VerbInfo>();
+            var res = new Array<ivt.VerbInfo>(); 
 
             res.push(getVerb("be/am/is/are	was/were	been	być"));
             res.push(getVerb("become	became	become	stawać się"));
@@ -131,6 +131,7 @@ module ivt {
             res.push(getVerb("wear	wore	wore	być ubranym w coś"));
             res.push(getVerb("win	won	won	wygrywać"));
             res.push(getVerb("write	wrote	written	pisać"));
+
 
             return res;
         }

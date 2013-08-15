@@ -1,4 +1,4 @@
-// Module
+ï»¿// Module
 var ivt;
 (function (ivt) {
     var VerbInfo = (function () {
@@ -27,99 +27,99 @@ var ivt;
         function getAllVerbs() {
             var res = new Array();
 
-            res.push(getVerb("be/am/is/are	was/were	been	byæ"));
-            res.push(getVerb("become	became	become	stawaæ siê"));
-            res.push(getVerb("begin	began	begun	zaczynaæ"));
-            res.push(getVerb("blow	blew	blown	wiaæ"));
-            res.push(getVerb("break	broke	broken	³amaæ"));
-            res.push(getVerb("bring	brought	brought	przynosiæ"));
-            res.push(getVerb("build	built	built	budowaæ"));
-            res.push(getVerb("burn	burned	burnt	spaliæ"));
-            res.push(getVerb("burst	burst	burst	wybuchaæ, pêkaæ"));
-            res.push(getVerb("buy	bought	bought	kupowaæ"));
-            res.push(getVerb("can	could	been able to	umieæ, móc, potrafiæ"));
-            res.push(getVerb("catch	caught	caught	chwytaæ, ³apaæ"));
-            res.push(getVerb("choose	chose	chosen	wybieraæ"));
-            res.push(getVerb("come	came	come	przybywaæ"));
-            res.push(getVerb("cost	cost	cost	kosztowaæ"));
-            res.push(getVerb("cut	cut	cut	ci¹æ"));
-            res.push(getVerb("dig	dug	dug	wykopywaæ, kopaæ"));
-            res.push(getVerb("do	did	done	robiæ"));
-            res.push(getVerb("draw	drew	drawn	narysowaæ, naszkicowa"));
-            res.push(getVerb("dream	dreamt	dreamed	œniæ"));
-            res.push(getVerb("drink	drank	drunk	piæ"));
-            res.push(getVerb("drive	drove	driven	kierowaæ"));
-            res.push(getVerb("eat	ate	eaten	jeœæ"));
-            res.push(getVerb("fall	fell	fallen	upadaæ"));
-            res.push(getVerb("feed	fed	fed	¿ywiæ, karmiæ"));
-            res.push(getVerb("feel	felt	felt	czuæ"));
-            res.push(getVerb("fight	fought	fought	walczyæ"));
-            res.push(getVerb("find	found	found	znajdowaæ"));
-            res.push(getVerb("fly	flew	flown	lataæ"));
-            res.push(getVerb("forget	forgot	forgotten	zapominaæ"));
-            res.push(getVerb("forgive	forgave	forgiven	wybaczaæ"));
-            res.push(getVerb("get	got	got	dostawaæ"));
-            res.push(getVerb("give	gave	given	dawaæ"));
-            res.push(getVerb("go	went	gone	iœæ, jechaæ"));
-            res.push(getVerb("grow	grew	grown	rosn¹æ"));
-            res.push(getVerb("hang	hung	hung	wieszaæ siê, kogoœ/coœ"));
-            res.push(getVerb("have	had	had	mieæ"));
-            res.push(getVerb("hear	heard	heard	s³yszeæ"));
-            res.push(getVerb("hide	hid	hid	ukrywaæ siê"));
-            res.push(getVerb("hit	hit	hit	uderzaæ"));
-            res.push(getVerb("hold	held	held	trzymaæ"));
-            res.push(getVerb("hurt	hurt	hurt	raniæ"));
-            res.push(getVerb("keep	kept	kept	trzymaæ"));
-            res.push(getVerb("know	knew	known	znaæ, wiedzieæ"));
-            res.push(getVerb("lead	led	led	prowadziæ"));
-            res.push(getVerb("learn	learnt	learnt	uczyc siê"));
-            res.push(getVerb("leave	left	left	opuszczaæ, wyje¿d¿aæ"));
-            res.push(getVerb("lend	lent	lent	po¿yczaæ komuœ"));
-            res.push(getVerb("let	let	let	pozwalaæ"));
-            res.push(getVerb("lie	lay	lain	le¿eæ"));
-            res.push(getVerb("light	lit	lighted	zapalaæ, podpalaæ"));
-            res.push(getVerb("lose	lost	lost	gubic, traciæ"));
-            res.push(getVerb("make	made	made	robiæ"));
-            res.push(getVerb("mean	mean	meant	znaczyæ"));
-            res.push(getVerb("meet	met	met	spotykaæ"));
-            res.push(getVerb("must/have to	had to	had to	musieæ"));
-            res.push(getVerb("pay	paid	paid	p³aciæ"));
-            res.push(getVerb("put	put	put	k³aœæ"));
-            res.push(getVerb("read	read	read	czytaæ"));
-            res.push(getVerb("ride	rode	ridden	jeŸdziæ (na czymœ)"));
-            res.push(getVerb("rise	rose	risen	rosn¹æ"));
-            res.push(getVerb("ring	rang	rung	dzwoniæ"));
+            res.push(getVerb("be/am/is/are	was/were	been	byÄ‡"));
+            res.push(getVerb("become	became	become	stawaÄ‡ siÄ™"));
+            res.push(getVerb("begin	began	begun	zaczynaÄ‡"));
+            res.push(getVerb("blow	blew	blown	wiaÄ‡"));
+            res.push(getVerb("break	broke	broken	Å‚amaÄ‡"));
+            res.push(getVerb("bring	brought	brought	przynosiÄ‡"));
+            res.push(getVerb("build	built	built	budowaÄ‡"));
+            res.push(getVerb("burn	burned	burnt	spaliÄ‡"));
+            res.push(getVerb("burst	burst	burst	wybuchaÄ‡, pÄ™kaÄ‡"));
+            res.push(getVerb("buy	bought	bought	kupowaÄ‡"));
+            res.push(getVerb("can	could	been able to	umieÄ‡, mÃ³c, potrafiÄ‡"));
+            res.push(getVerb("catch	caught	caught	chwytaÄ‡, Å‚apaÄ‡"));
+            res.push(getVerb("choose	chose	chosen	wybieraÄ‡"));
+            res.push(getVerb("come	came	come	przybywaÄ‡"));
+            res.push(getVerb("cost	cost	cost	kosztowaÄ‡"));
+            res.push(getVerb("cut	cut	cut	ciÄ…Ä‡"));
+            res.push(getVerb("dig	dug	dug	wykopywaÄ‡, kopaÄ‡"));
+            res.push(getVerb("do	did	done	robiÄ‡"));
+            res.push(getVerb("draw	drew	drawn	narysowaÄ‡, naszkicowa"));
+            res.push(getVerb("dream	dreamt	dreamed	Å›niÄ‡"));
+            res.push(getVerb("drink	drank	drunk	piÄ‡"));
+            res.push(getVerb("drive	drove	driven	kierowaÄ‡"));
+            res.push(getVerb("eat	ate	eaten	jeÅ›Ä‡"));
+            res.push(getVerb("fall	fell	fallen	upadaÄ‡"));
+            res.push(getVerb("feed	fed	fed	Å¼ywiÄ‡, karmiÄ‡"));
+            res.push(getVerb("feel	felt	felt	czuÄ‡"));
+            res.push(getVerb("fight	fought	fought	walczyÄ‡"));
+            res.push(getVerb("find	found	found	znajdowaÄ‡"));
+            res.push(getVerb("fly	flew	flown	lataÄ‡"));
+            res.push(getVerb("forget	forgot	forgotten	zapominaÄ‡"));
+            res.push(getVerb("forgive	forgave	forgiven	wybaczaÄ‡"));
+            res.push(getVerb("get	got	got	dostawaÄ‡"));
+            res.push(getVerb("give	gave	given	dawaÄ‡"));
+            res.push(getVerb("go	went	gone	iÅ›Ä‡, jechaÄ‡"));
+            res.push(getVerb("grow	grew	grown	rosnÄ…Ä‡"));
+            res.push(getVerb("hang	hung	hung	wieszaÄ‡ siÄ™, kogoÅ›/coÅ›"));
+            res.push(getVerb("have	had	had	mieÄ‡"));
+            res.push(getVerb("hear	heard	heard	sÅ‚yszeÄ‡"));
+            res.push(getVerb("hide	hid	hid	ukrywaÄ‡ siÄ™"));
+            res.push(getVerb("hit	hit	hit	uderzaÄ‡"));
+            res.push(getVerb("hold	held	held	trzymaÄ‡"));
+            res.push(getVerb("hurt	hurt	hurt	raniÄ‡"));
+            res.push(getVerb("keep	kept	kept	trzymaÄ‡"));
+            res.push(getVerb("know	knew	known	znaÄ‡, wiedzieÄ‡"));
+            res.push(getVerb("lead	led	led	prowadziÄ‡"));
+            res.push(getVerb("learn	learnt	learnt	uczyc siÄ™"));
+            res.push(getVerb("leave	left	left	opuszczaÄ‡, wyjeÅ¼dÅ¼aÄ‡"));
+            res.push(getVerb("lend	lent	lent	poÅ¼yczaÄ‡ komuÅ›"));
+            res.push(getVerb("let	let	let	pozwalaÄ‡"));
+            res.push(getVerb("lie	lay	lain	leÅ¼eÄ‡"));
+            res.push(getVerb("light	lit	lighted	zapalaÄ‡, podpalaÄ‡"));
+            res.push(getVerb("lose	lost	lost	gubic, traciÄ‡"));
+            res.push(getVerb("make	made	made	robiÄ‡"));
+            res.push(getVerb("mean	mean	meant	znaczyÄ‡"));
+            res.push(getVerb("meet	met	met	spotykaÄ‡"));
+            res.push(getVerb("must/have to	had to	had to	musieÄ‡"));
+            res.push(getVerb("pay	paid	paid	pÅ‚aciÄ‡"));
+            res.push(getVerb("put	put	put	kÅ‚aÅ›Ä‡"));
+            res.push(getVerb("read	read	read	czytaÄ‡"));
+            res.push(getVerb("ride	rode	ridden	jeÅºdziÄ‡ (na czymÅ›)"));
+            res.push(getVerb("rise	rose	risen	rosnÄ…Ä‡"));
+            res.push(getVerb("ring	rang	rung	dzwoniÄ‡"));
             res.push(getVerb("run	ran	run	biec"));
-            res.push(getVerb("say	said	said	mówiæ"));
-            res.push(getVerb("see	saw	seen	widzieæ"));
-            res.push(getVerb("sell	sold	sold	sprzedawaæ"));
-            res.push(getVerb("send	sent	sent	wysy³aæ"));
-            res.push(getVerb("set	set	set	umieszczaæ, postawiæ"));
-            res.push(getVerb("shine	shone	shone	zaœwieciæ (czymœ)"));
-            res.push(getVerb("show	showed	shown	pokazywaæ"));
-            res.push(getVerb("shut	shut	shut	zamykaæ, zatrzaskiwaæ"));
-            res.push(getVerb("sing	sang	sung	œpiewaæ"));
-            res.push(getVerb("sink	sank	sunk	ton¹æ"));
-            res.push(getVerb("sit	sat	sat	siedzieæ"));
-            res.push(getVerb("sleep	slept	slept	spaæ"));
-            res.push(getVerb("smell	smelled	smelt	w¹chaæ, pachnieæ"));
-            res.push(getVerb("speak	spoke	spoken	mówiæ"));
-            res.push(getVerb("spend	spent	spent	spêdzaæ"));
-            res.push(getVerb("spill	spilt	spilled	rozlewaæ"));
-            res.push(getVerb("stand	stood	stood	staæ"));
-            res.push(getVerb("steal	stole	stolen	kraœæ"));
-            res.push(getVerb("swim	swam	swum	p³ywaæ"));
-            res.push(getVerb("take	took	taken	braæ"));
-            res.push(getVerb("teach	taught	taught	uczyæ"));
-            res.push(getVerb("tear	torn	torn	drzeæ, rozrywaæ"));
-            res.push(getVerb("tell	told	told	mówiæ"));
-            res.push(getVerb("think	thought	thought	mysleæ"));
-            res.push(getVerb("throw	threw	thrown	wyrzucaæ"));
-            res.push(getVerb("understand	understood	understood	rozumieæ"));
-            res.push(getVerb("wake	woke	woken	budziæ siê"));
-            res.push(getVerb("wear	wore	wore	byæ ubranym w coœ"));
-            res.push(getVerb("win	won	won	wygrywaæ"));
-            res.push(getVerb("write	wrote	written	pisaæ"));
+            res.push(getVerb("say	said	said	mÃ³wiÄ‡"));
+            res.push(getVerb("see	saw	seen	widzieÄ‡"));
+            res.push(getVerb("sell	sold	sold	sprzedawaÄ‡"));
+            res.push(getVerb("send	sent	sent	wysyÅ‚aÄ‡"));
+            res.push(getVerb("set	set	set	umieszczaÄ‡, postawiÄ‡"));
+            res.push(getVerb("shine	shone	shone	zaÅ›wieciÄ‡ (czymÅ›)"));
+            res.push(getVerb("show	showed	shown	pokazywaÄ‡"));
+            res.push(getVerb("shut	shut	shut	zamykaÄ‡, zatrzaskiwaÄ‡"));
+            res.push(getVerb("sing	sang	sung	Å›piewaÄ‡"));
+            res.push(getVerb("sink	sank	sunk	tonÄ…Ä‡"));
+            res.push(getVerb("sit	sat	sat	siedzieÄ‡"));
+            res.push(getVerb("sleep	slept	slept	spaÄ‡"));
+            res.push(getVerb("smell	smelled	smelt	wÄ…chaÄ‡, pachnieÄ‡"));
+            res.push(getVerb("speak	spoke	spoken	mÃ³wiÄ‡"));
+            res.push(getVerb("spend	spent	spent	spÄ™dzaÄ‡"));
+            res.push(getVerb("spill	spilt	spilled	rozlewaÄ‡"));
+            res.push(getVerb("stand	stood	stood	staÄ‡"));
+            res.push(getVerb("steal	stole	stolen	kraÅ›Ä‡"));
+            res.push(getVerb("swim	swam	swum	pÅ‚ywaÄ‡"));
+            res.push(getVerb("take	took	taken	braÄ‡"));
+            res.push(getVerb("teach	taught	taught	uczyÄ‡"));
+            res.push(getVerb("tear	torn	torn	drzeÄ‡, rozrywaÄ‡"));
+            res.push(getVerb("tell	told	told	mÃ³wiÄ‡"));
+            res.push(getVerb("think	thought	thought	mysleÄ‡"));
+            res.push(getVerb("throw	threw	thrown	wyrzucaÄ‡"));
+            res.push(getVerb("understand	understood	understood	rozumieÄ‡"));
+            res.push(getVerb("wake	woke	woken	budziÄ‡ siÄ™"));
+            res.push(getVerb("wear	wore	wore	byÄ‡ ubranym w coÅ›"));
+            res.push(getVerb("win	won	won	wygrywaÄ‡"));
+            res.push(getVerb("write	wrote	written	pisaÄ‡"));
 
             return res;
         }
@@ -267,7 +267,8 @@ var ivt;
             clearAnswers();
             ivt.currentVerb++;
             if (ivt.currentVerb > learnVerbList.length - 1)
-                jQuery.mobile.changePage("#results", { transition: "slide", changeHash: false }); else {
+                jQuery.mobile.changePage("#results", { transition: "slide", changeHash: false });
+else {
                 setVerb(learnVerbList[ivt.currentVerb]);
                 updateProgressView();
             }
@@ -299,7 +300,8 @@ var ivt;
             var verb = selectedVerbList[i];
             var div = document.createElement('div');
             if (verb == learnVerbList[ivt.currentVerb])
-                div.style.color = "black"; else
+                div.style.color = "black";
+else
                 div.style.color = "gray";
 
             //div.appendChild(getSpan(verb.Form1 + " - "));
@@ -331,6 +333,34 @@ var ivt;
         jQuery("#results-table").table("refresh");
 
         return;
+        /*
+        var hdr = document.createElement('div');
+        hdr.appendChild(getSpan("Lesson finished"));
+        hdr.style.fontWeight = "bold";
+        verbsTable.appendChild(hdr);
+        
+        //summaryArr.sort();
+        for (var sk in summaryArr) {
+        var div = document.createElement('div');
+        var kName = sk.toString() + " mistakes: ";
+        if (kName == "0 mistakes: ") {
+        kName = "Correct: ";
+        div.style.color = "DarkGreen";
+        }
+        else {
+        div.style.color = "Maroon";
+        }
+        if (kName == "1 mistakes: ") {
+        kName = "1 mistake: ";
+        }
+        div.appendChild(getSpan(kName));
+        
+        var sValues = summaryArr[sk].join();
+        div.appendChild(getSpan(sValues));
+        
+        verbsTable.appendChild(div);
+        }
+        */
     }
     ivt.loadTestResults = loadTestResults;
 })(ivt || (ivt = {}));
@@ -346,4 +376,3 @@ jQuery(document).on("pagebeforeshow", "#lesson", function (event) {
 jQuery(document).on("pagebeforeshow", "#results", function (event) {
     ivt.loadTestResults();
 });
-//@ sourceMappingURL=ivt.js.map
