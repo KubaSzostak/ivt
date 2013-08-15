@@ -1,7 +1,7 @@
 ﻿
 
 declare var jQuery;
-// dev branch test
+// dev branch test (gh-change)
 
 // Module
 module ivt {
