@@ -47,7 +47,7 @@
     </div>
 
     <div data-role="page" id="lesson">
-        <div data-role="header" data-position="fixed">
+        <div data-role="header" data-position="fixed" id="lesson-header">
             <a href="#config" data-icon="delete" data-direction="reverse" data-transition="slide">Cancel</a>
             <h2>Irregular Verbs Trainer</h2>
         </div>
@@ -60,9 +60,7 @@
                     <label>Verb: </label>
                     <label id="verbLabel" style="font-weight: bold">rise</label>
                     <label style="color: #666666">(<label id="verbNativeLabel">rosnąć</label>)</label>
-                </div>
-                <div>
-                    <label id="verbInfo"></label>
+                    <label id="verbInfo" style="padding-left: 1em;"></label>
                 </div>
                 <hr />
                 <p>Enter valid verb forms</p>
@@ -91,7 +89,7 @@
 
                 </div>
                 <p>
-                    <label>Attempt number: </label>
+                    <label>Learning position: </label>
                     <label style="font-weight: 700" id="verbNumberLabel">2</label>
                     of
             <label id="verbCountLabel">48</label>

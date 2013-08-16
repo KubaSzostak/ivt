@@ -152,7 +152,7 @@ var ivt;
     var Verbs = ivt.Verbs;
 
     ivt.currentVerb = 0;
-    var verbsToLearn = 10;
+    ivt.verbsToLearn = 10;
     ivt.verbsIncorrect;
     ivt.verbsCorrect;
 
@@ -162,24 +162,25 @@ var ivt;
     function updateProgressView() {
         jQuery("#verbNumberLabel").text(ivt.currentVerb + 1);
         jQuery("#verbCountLabel").text(learnVerbList.length);
-        jQuery("#verbToLearnLabel").text(verbsToLearn);
+        jQuery("#verbToLearnLabel").text(ivt.verbsToLearn);
         jQuery("#verbRepetitionsLabel").text((ivt.verbsIncorrect * 2));
 
         var verb = learnVerbList[ivt.currentVerb];
         var vInfos = new Array();
         if (verb.ValidAnswers > 0) {
-            vInfos.push('<span style="color:DarkGreen;">Valid answers: ' + verb.ValidAnswers + '</span>');
+            vInfos.push('<span style="color:DarkGreen;">&#10003; ' + verb.ValidAnswers + '</span>');
         }
         if (verb.Errors > 0) {
-            vInfos.push('<span style="color:maroon;">Mistakes: ' + verb.Errors + '</span>');
+            vInfos.push('<span style="color:maroon;">&times; ' + verb.Errors + '</span>');
         }
         var repLeft = verb.Repetitions - verb.ValidAnswers;
         if (repLeft > 0) {
-            vInfos.push('<span style="color:black;">Repetitions: ' + repLeft + '</span>');
+            vInfos.push('<span style="color:black;">&raquo; ' + repLeft + '</span>');
         }
 
+        var sep = '<span style="font-size:small; color:silver;"> | </span>';
         if (vInfos.length > 0) {
-            jQuery("#verbInfo").html(vInfos.join(" | "));
+            jQuery("#verbInfo").html(sep + vInfos.join(sep) + sep);
         } else {
             jQuery("#verbInfo").text("");
         }
@@ -194,19 +195,33 @@ var ivt;
         jQuery("#verbForm3Label").html("&nbsp;");
     }
 
+    function scrollToElment(id) {
+        var verbTop = jQuery(id).offset().top - jQuery("#lesson-header").height() - 2;
+        if (verbTop < 0) {
+            return;
+        }
+        var docTop = jQuery(document).scrollTop();
+        if (docTop > verbTop) {
+            jQuery.mobile.silentScroll(verbTop);
+        }
+    }
+
     function setVerb(verb) {
         jQuery("#verbLabel").text(verb.Form1);
         jQuery("#verbNativeLabel").text(verb.Native);
+        jQuery("#verbForm1Box").select();
+        jQuery("#verbForm1Box").focus();
+        scrollToElment("#verbLabel");
     }
 
     function startNewLesson() {
-        verbsToLearn = parseInt(jQuery("#verbsToLearnBox").val());
-        if (isNaN(verbsToLearn)) {
+        ivt.verbsToLearn = parseInt(jQuery("#verbsToLearnBox").val());
+        if (isNaN(ivt.verbsToLearn)) {
             alert("Ivalid value: 'Count of verbs to learn'");
             return;
         }
-        selectedVerbList = Verbs.getRandomList(verbsToLearn);
-        learnVerbList = selectedVerbList.slice(0, verbsToLearn);
+        selectedVerbList = Verbs.getRandomList(ivt.verbsToLearn);
+        learnVerbList = selectedVerbList.slice(0, ivt.verbsToLearn);
 
         //Summary.Clear();
         ivt.currentVerb = 0;
@@ -236,6 +251,7 @@ var ivt;
                 boxElem.select();
                 boxElem.focus();
                 invalidInputSelected = true;
+                scrollToElment("#verbForm" + formNo + "Label");
             }
         } else {
             boxElem.closest('div').css("background-color", "");
@@ -256,26 +272,32 @@ var ivt;
         return v1 && v2 && v3;
     }
 
+    function goToResults() {
+        jQuery.mobile.changePage("#results", { transition: "slide", changeHash: false });
+    }
+
     function goToNextVerb() {
         var verb = learnVerbList[ivt.currentVerb];
         verb.Answers += 1;
 
         var valid = imputsAreValid(verb);
         if (valid) {
-            verb.ValidAnswers += 1;
             ivt.verbsCorrect++;
-            clearAnswers();
+            verb.ValidAnswers += 1;
             ivt.currentVerb++;
-            if (ivt.currentVerb > learnVerbList.length - 1)
-                jQuery.mobile.changePage("#results", { transition: "slide", changeHash: false });
-else {
+
+            clearAnswers();
+            if (ivt.currentVerb > learnVerbList.length - 1) {
+                goToResults();
+            } else {
                 setVerb(learnVerbList[ivt.currentVerb]);
                 updateProgressView();
             }
-            jQuery("#verbForm1Box").select();
-            jQuery("#verbForm1Box").focus();
         } else {
             ivt.verbsIncorrect++;
+            verb.Repetitions += 2;
+            verb.Errors += 1;
+
             var pos = ivt.currentVerb + 5;
             if (pos > learnVerbList.length)
                 pos = learnVerbList.length;
@@ -283,8 +305,6 @@ else {
             learnVerbList.splice(pos, 0, cv);
             learnVerbList.push(cv);
 
-            verb.Repetitions += 2;
-            verb.Errors += 1;
             updateProgressView();
         }
     }

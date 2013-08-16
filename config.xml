@@ -9,10 +9,10 @@
 
   <name>IVT</name>
 
-  <description><![CDATA[Irregular Verbs Trainer
+  <description><![CDATA[Irregular Verbs Trainer. 
 When You enter correct verb forms IVT goes further and give You next verb to test. But when You enter incorrect verb forms IVT add two repetitions of this verb: 
-  1.first verb close to Your lerning position (after two or three other verbs to learn) 
-  2.second verb at end of lesson 
+  1. first verb close to Your lerning position (after two or three other verbs to learn) 
+  2. second verb at end of lesson 
 If You remember valid verb forms for a while, but forgot it at the end - You have another two repetitions. There is no way to leave lesson without new verb forms deep in Your memory :)
 ]]>    
   </description>
@@ -23,5 +23,6 @@ If You remember valid verb forms for a while, but forgot it at the end - You hav
   
   <icon src="icon.png" />
   <preference name="permissions" value="none"/>
+  <preference name="exit-on-suspend" value="false" />
 
 </widget>
