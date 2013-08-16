@@ -2,8 +2,8 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     id        = "com.novotive.ivt"
-    versionCode="130815"
-    version   = "1.4.815">
+    versionCode="130816"
+    version   = "1.4.816">
 
   <!-- versionCode is optional and Android only -->
 
