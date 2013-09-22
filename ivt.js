@@ -4,6 +4,15 @@ var ivt;
     var VerbInfo = (function () {
         function VerbInfo() {
         }
+        VerbInfo.prototype.getNative = function () {
+            var nav = window.navigator;
+            var navLang = (nav.userLanguage || nav.language || "");
+            if (navLang.toLowerCase().match("^pl")) {
+                return this.Native;
+            } else {
+                return "";
+            }
+        };
         return VerbInfo;
     })();
     ivt.VerbInfo = VerbInfo;
@@ -124,6 +133,14 @@ var ivt;
             return res;
         }
 
+        function getCount() {
+            if (allVerbList == null) {
+                allVerbList = getAllVerbs();
+            }
+            return allVerbList.length;
+        }
+        Verbs.getCount = getCount;
+
         function getRandomList(count) {
             if (allVerbList == null) {
                 allVerbList = getAllVerbs();
@@ -152,12 +169,19 @@ var ivt;
     var Verbs = ivt.Verbs;
 
     ivt.currentVerb = 0;
-    ivt.verbsToLearn = 10;
+    ivt.verbsToLearn = 30;
+    ivt.repeatIncorrectVerbAfter = 3;
     ivt.verbsIncorrect;
     ivt.verbsCorrect;
 
     var selectedVerbList;
     var learnVerbList;
+
+    function isLanguage(lang) {
+        var nav = window.navigator;
+        var navLang = (nav.userLanguage || nav.language || "").toLower();
+        return navLang.match("^" + lang);
+    }
 
     function updateProgressView() {
         jQuery("#verbNumberLabel").text(ivt.currentVerb + 1);
@@ -174,8 +198,8 @@ var ivt;
             vInfos.push('<span style="color:maroon;">&times; ' + verb.Errors + '</span>');
         }
         var repLeft = verb.Repetitions - verb.ValidAnswers;
-        if (repLeft > 0) {
-            vInfos.push('<span style="color:black;">&raquo; ' + repLeft + '</span>');
+        if (repLeft >= 0) {
+            vInfos.push('<span style="color:black;">&raquo; ' + (repLeft + 1) + '</span>');
         }
 
         var sep = '<span style="font-size:small; color:silver;"> | </span>';
@@ -208,7 +232,7 @@ var ivt;
 
     function setVerb(verb) {
         jQuery("#verbLabel").text(verb.Form1);
-        jQuery("#verbNativeLabel").text(verb.Native);
+        jQuery("#verbNativeLabel").text(verb.getNative());
         jQuery("#verbForm1Box").select();
         jQuery("#verbForm1Box").focus();
         scrollToElment("#verbLabel");
@@ -298,7 +322,7 @@ var ivt;
             verb.Repetitions += 2;
             verb.Errors += 1;
 
-            var pos = ivt.currentVerb + 5;
+            var pos = ivt.currentVerb + ivt.repeatIncorrectVerbAfter;
             if (pos > learnVerbList.length)
                 pos = learnVerbList.length;
             var cv = learnVerbList[ivt.currentVerb];

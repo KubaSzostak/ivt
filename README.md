@@ -3,7 +3,7 @@
 
 ## Web application
 
-Use Your favorite web browser on desktop or mobile decice
+Use Your favorite web browser on desktop or mobile device
 
 http://kubaszostak.github.io/ivt/
 

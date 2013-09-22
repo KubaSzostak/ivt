@@ -14,37 +14,86 @@
 </head>
 <body>
     <div data-role="page" id="config">
-        <div data-role="header"  data-position="fixed">
-            <h2>Irregular Verbs Trainer</h2>
+        <div data-role="header" data-position="fixed">
+            <a href="#about" data-icon="info" data-rel="dialog">About</a>
+            <h2>IVT</h2>
         </div>
         <div data-role="content">
-            <h3>Start</h3>
+            <h3>Irregular Verbs Trainer</h3>
             <div data-role="fieldcontain">
                 <label>Count of verbs to learn &nbsp;</label>
-                <input id="verbsToLearnBox" type="text" value="10" data-inline="true"
+                <input id="verbsToLearnBox" type="text" value="30" data-inline="true"
                     onkeydown="if (event.keyCode == 13) document.getElementById('startNewLessonButton').click()" />
             </div>
             <div>
                 <a id="startNewLessonButton" href="#lesson" data-role="button"
                     data-inline="true" data-transition="slide">Start new lesson</a>
             </div>
-            <hr />
-            <h3>How it works</h3>
-            <p>
-                When You enter correct <em>verb</em> forms IVT goes further and give You next verb to test.
-                But when You enter incorrect <em>verb forms</em> IVT add two repetitions of this <em>verb</em>: 
-            </p>
-            <ol>
-                <li>first <em>verb</em> close to Your lerning position (after two or three other <em>verbs</em> to learn)</li>
-                <li>second <em>verb</em> at end of lesson</li>
-            </ol>
-            <p>
-               If You remember valid <em>verb forms</em> for a while,
-                but forgot it at the end - You have another two repetitions. There is no way
-                to leave lesson without new <em>verb forms</em> deep in Your memory :)
-            </p>
         </div>
     </div>
+
+
+
+
+    <div id="about" data-role="dialog" data-close-btn="none">
+        <div data-role="header">
+            <h2>About IVT</h2>
+        </div>
+        <div data-role="content">
+            <div data-role="collapsible-set" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d"  data-content-theme="d" >
+
+                <div data-role="collapsible" data-collapsed="false" >
+                    <h3><span>How it works</span></h3>
+                    <p>
+                        When You enter correct <em>verb</em> forms IVT goes further and give You next verb to test.
+                        But when You enter incorrect <em>verb forms</em> IVT add two repetitions of this <em>verb</em>: 
+                    </p>
+                    <ul>
+                        <li>first <em>verb</em> close to Your learning  position (after two or three other <em>verbs</em> to learn)</li>
+                        <li>second <em>verb</em> at end of lesson</li>
+                    </ul>
+                    <p>
+                        If You remember valid <em>verb forms</em> for a while,
+                        but forgot it at the end - You have another two repetitions. There is no way
+                        to leave lesson without new <em>verb forms</em> deep in Your memory :)
+                    </p>
+                </div>
+
+                <div data-role="collapsible">
+                    <h3><span data-phrase-id="Contact">Contact</span></h3>
+                    <p data-phrase-id="AboutContactText">
+                        If You have any question, suggestion or you find something wrong with Map Viewer 
+                visit <a href="http://ivt.userecho.com/list/23988-ideas-and-questions/" target="_blank" rel="external">IVT Ideas and Questions forum</a>. 
+                    </p>
+                    <p data-phrase-id="AboutContactMail">
+                        I'm also available by email if you prefer:
+                        <br />
+                        <strong>kuba.szostak@gmail.com</strong>
+                    </p>
+                </div>
+
+                <div data-role="collapsible">
+                    <h3><span data-phrase-id="UsedTechnologies">Platforms</span></h3>
+                    <ul>
+                        <li><a href="http://kubaszostak.github.io/ivt/" target="_blank">IVT web app - user Your favorite browser</a></li>
+                        <li><a href="https://build.phonegap.com/apps/510981/share" target="_blank">IVT mobile app - Android, Windows Phone, Symbian</a></li>
+                        <li><a href="https://github.com/kubaszostak/ivt" target="_blank">IVT source code on GitHub</a></li>
+                        <li><a href="http://jquerymobile.com/" target="_blank">jQuery mobile</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <ul data-role="listview" data-inset="false" data-divider-theme="d" style="margin-top: 1em;">
+                <li>
+                    <div>
+                        <a href="#config" data-icon="back" data-role="button" data-inline="true">Close</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--<div data-role="content">-->
+    </div>
+    <!--about-->
 
     <div data-role="page" id="lesson">
         <div data-role="header" data-position="fixed" id="lesson-header">
@@ -113,7 +162,7 @@
 
     <div data-role="page" id="results">
         <div data-role="header" data-position="fixed">
-            <a href="#config" data-icon="delete" data-direction="reverse" data-transition="slide">Close</a>
+            <a href="#config" data-icon="back" data-direction="reverse" data-transition="slide">Close</a>
             <h2>Irregular Verbs Trainer</h2>
         </div>
         <div data-role="content">
@@ -157,9 +206,13 @@
                     </tr>
                 </tbody>
             </table>
-
+            <p>
+                &nbsp;
+            </p>
+            <a href="#config" data-icon="back" data-direction="reverse" data-transition="slide" data-role="button" data-inline="true">Close</a>
 
         </div>
+        <!--content-->
     </div>
 </body>
 </html>
