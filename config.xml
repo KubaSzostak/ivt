@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
-    id        = "com.novotive.ivt"
-    versionCode="130816"
-    version   = "1.4.816">
+    id        = "io.github.kubaszostak.ivt"
+    versionCode="130922"
+    version   = "1.4.922">
 
   <!-- versionCode is optional and Android only -->
 
@@ -17,8 +17,8 @@ If You remember valid verb forms for a while, but forgot it at the end - You hav
 ]]>    
   </description>
 
-  <author href="https://novotive.com" email="info@novotive.com">
-    Novotive
+  <author href="https://kubaszostak.github.io" email="kuba.szostak@gmail.com">
+    Kuba Szostak
   </author>
   
   <icon src="icon.png" />
