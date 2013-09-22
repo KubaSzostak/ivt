@@ -2,8 +2,8 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     id        = "io.github.kubaszostak.ivt"
-    versionCode="130922"
-    version   = "1.4.922">
+    versionCode="130923"
+    version   = "1.4.923">
 
   <!-- versionCode is optional and Android only -->
 
