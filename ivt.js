@@ -266,7 +266,7 @@ var ivt;
         if (validVerb == null)
             validVerb = "ERROR";
 
-        var res = input.toLowerCase() == validVerb.toLowerCase();
+        var res = input.toLowerCase().trim() == validVerb.toLowerCase();
         if (!res) {
             boxElem.closest('div').css("background-color", "PapayaWhip");
             boxElem.attr("placeholder", validVerb).blur();
