@@ -9,8 +9,19 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery.mobile-1.3.2.min.js"></script>
 
-    <script src="ivt.js"></script>
     <script src="phonegap.js"></script>
+
+    <style>
+        .ivt-content {
+            max-width:48em;
+            margin-left: auto;
+            margin-right:auto;
+        }
+
+        .ui-li-aside {
+            color:dimgray;
+        }
+    </style>
 </head>
 <body>
     <div data-role="page" id="config">
@@ -18,9 +29,11 @@
             <a href="#about" data-icon="info" data-rel="dialog">About</a>
             <h2>IVT</h2>
         </div>
-        <div data-role="content">
+        <div data-role="content" class="ivt-content" >
             <h3>Irregular Verbs Trainer</h3>
-            <div data-role="fieldcontain">
+
+            <!--            
+           <div data-role="fieldcontain">
                 <label>Count of verbs to learn &nbsp;</label>
                 <input id="verbsToLearnBox" type="text" value="30" data-inline="true"
                     onkeydown="if (event.keyCode == 13) document.getElementById('startNewLessonButton').click()" />
@@ -29,6 +42,56 @@
                 <a id="startNewLessonButton" href="#lesson" data-role="button"
                     data-inline="true" data-transition="slide">Start new lesson</a>
             </div>
+             -->
+
+            <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">Select Your learning level </li>
+                <li><a href="#lesson" onclick="ivt.startBeginnerLevelLesson()">
+                    <h2 style="color: darkgreen;">Beginner</h2>
+                    <p><strong>Verbs to learn: 7</strong></p>
+                    <p>Start learning irregular forms of basic english verbs</p>
+                    <p class="ui-li-aside" >A total of <strong id="beginnerVerbsCountLabel">???</strong> verbs</p>
+                </a></li>
+                <li><a href="#lesson" onclick="ivt.startBasicLevelLesson()">
+                    <h2 style="color: navy;">Basic</h2>
+                    <p><strong>Verbs to learn: 15</strong></p>
+                    <p>Learn all irregular verbs collected in database</p>
+                    <p class="ui-li-aside">A total of <strong id="basicVerbsCountLabel">???</strong> verbs</p>
+                </a></li>
+                <li><a href="#lesson" onclick="ivt.startAdvancedLevelLesson()">
+                    <h2 style="color:maroon;">Advanced</h2>
+                    <p><strong>Verbs to learn: 30</strong></p>
+                    <p>Become a professional with a good knowledge of irregular verbs forms</p>
+                    <p class="ui-li-aside">A total of <strong id="advancedVerbsCountLabel">???</strong> verbs</p>
+                </a></li>
+
+                <!--Group Section-->
+                <li data-role="list-divider">Select specific group</li>
+                <li><a href="#lesson" onclick="ivt.startGroup1Lesson()">
+                    <h2>...ught + ...tood</h2>
+                    <p><strong>Verbs to learn: 7</strong></p>
+                    <p>Learn verbs like <i>bo<strong>ught</strong>, ta<strong>ught</strong>, unders<strong>tood</strong></i> </p>
+                    <p class="ui-li-aside">A total of <strong id="group1VerbsCountLabel">???</strong> verbs</p>
+                </a></li>
+                <li><a href="#lesson" onclick="ivt.startGroup2Lesson()">
+                    <h2>...ed + ...en</h2>
+                    <p><strong>Verbs to learn: 15</strong></p>
+                    <p>Learn verbs like <i>burn<strong>ed</strong>, forgott<strong>en</strong>, writt<strong>en</strong> </i></p>
+                    <p class="ui-li-aside">A total of <strong id="group2VerbsCountLabel">???</strong> verbs</p>
+                </a></li>
+                <li><a href="#lesson" onclick="ivt.startGroup4Lesson()">
+                    <h2>Form2 = Form3</h2>
+                    <p><strong>Verbs to learn: 15</strong></p>
+                    <p>Learn verbs with the same second and third form like <i>find found found; send sent sent</i> </p>
+                    <p class="ui-li-aside">A total of <strong id="group4VerbsCountLabel">???</strong> verbs</p>
+                </a></li>
+                <li><a href="#lesson" onclick="ivt.startGroup4Lesson()">
+                    <h2>No rule</h2>
+                    <p><strong>Verbs to learn: 15</strong></p>
+                    <p>Learn verbs the most tricky verbs like <i>go went gone</i> </p>
+                    <p class="ui-li-aside">A total of <strong id="group3VerbsCountLabel">???</strong> verbs</p>
+                </a></li>
+            </ul>
         </div>
     </div>
 
@@ -173,9 +236,9 @@
                     <tr>
                         <th>#</th>
                         <th>Verb</th>
-                        <th>Answers</th>
-                        <th>Valid Answers</th>
                         <th>Wrong Answers</th>
+                        <th>Valid Answers</th>
+                        <th>Answers</th>
                         <th>Repetitions</th>
                     </tr>
                 </thead>
@@ -214,5 +277,7 @@
         </div>
         <!--content-->
     </div>
+    
+    <script src="ivt.js"></script>
 </body>
 </html>
