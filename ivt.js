@@ -624,7 +624,7 @@ var ivt;
     ivt.startAdvancedLevelLesson = startAdvancedLevelLesson;
 
     function startGroup1Lesson() {
-        ivt.verbsToLearn = 2;
+        ivt.verbsToLearn = 7;
         selectedVerbList = Verbs.getRandomList(Verbs.getVerbsGroup1());
         startNewLesson();
     }
