@@ -30,6 +30,7 @@ var ivt;
 
             return v;
         }
+        Verbs.getVerb = getVerb;
 
         function getAllVerbs() {
             var res = new Array();
@@ -371,11 +372,17 @@ var ivt;
     })(ivt.Verbs || (ivt.Verbs = {}));
     var Verbs = ivt.Verbs;
 
+    ivt.prevEnterdVerb = ivt.Verbs.getVerb("f1	f2	f3	native");
     ivt.currentVerb = 0;
     ivt.verbsToLearn = 30;
     ivt.repeatIncorrectVerbAfter = 3;
     ivt.verbsIncorrect;
     ivt.verbsCorrect;
+
+    ivt.charCheck = "&#10003;";
+    ivt.charError = "&times;";
+    ivt.charRepeat = "&raquo;";
+    ivt.charDots = "&hellip;";
 
     var selectedVerbList;
     var learnVerbList;
@@ -395,14 +402,14 @@ var ivt;
         var verb = learnVerbList[ivt.currentVerb];
         var vInfos = new Array();
         if (verb.ValidAnswers > 0) {
-            vInfos.push('<span style="color:DarkGreen;">&#10003; ' + verb.ValidAnswers + '</span>');
+            vInfos.push('<span style="color:DarkGreen;">' + ivt.charCheck + ' ' + verb.ValidAnswers + '</span>');
         }
         if (verb.Errors > 0) {
-            vInfos.push('<span style="color:maroon;">&times; ' + verb.Errors + '</span>');
+            vInfos.push('<span style="color:maroon;">' + ivt.charError + ' ' + verb.Errors + '</span>');
         }
         var repLeft = verb.Repetitions - verb.ValidAnswers;
         if (repLeft >= 0) {
-            vInfos.push('<span style="color:black;">&raquo; ' + (repLeft + 1) + '</span>');
+            vInfos.push('<span style="color:black;">' + ivt.charRepeat + ' ' + (repLeft + 1) + '</span>');
         }
 
         var sep = '<span style="font-size:small; color:silver;"> | </span>';
@@ -439,6 +446,11 @@ var ivt;
         jQuery("#verbForm1Box").select();
         jQuery("#verbForm1Box").focus();
         scrollToElment("#verbLabel");
+    }
+
+    function getInput(formNo) {
+        var boxElem = jQuery("#" + "verbForm" + formNo + "Box");
+        return boxElem.val();
     }
 
     function imputIsValid(validVerb, formNo) {
@@ -502,19 +514,31 @@ var ivt;
                 updateProgressView();
             }
         } else {
+            if ((ivt.prevEnterdVerb != null) && (ivt.prevEnterdVerb.Form1 == getInput(1)) && (ivt.prevEnterdVerb.Form2 == getInput(2)) && (ivt.prevEnterdVerb.Form3 == getInput(3))) {
+                return;
+            }
             ivt.verbsIncorrect++;
-            verb.Repetitions += 2;
             verb.Errors += 1;
 
             var pos = ivt.currentVerb + ivt.repeatIncorrectVerbAfter;
             if (pos > learnVerbList.length)
                 pos = learnVerbList.length;
             var cv = learnVerbList[ivt.currentVerb];
-            learnVerbList.splice(pos, 0, cv); // Powtórz za chwilę
-            learnVerbList.push(cv); // i na końcu
+
+            if ((pos < learnVerbList.length) && (learnVerbList[pos].Form1 != cv.Form1)) {
+                learnVerbList.splice(pos, 0, cv); // Powtórz za chwilę
+                verb.Repetitions++;
+            }
+            if (learnVerbList[learnVerbList.length - 1].Form1 != cv.Form1) {
+                learnVerbList.push(cv); // i na końcu
+                verb.Repetitions++;
+            }
 
             updateProgressView();
         }
+        ivt.prevEnterdVerb.Form1 = getInput(1);
+        ivt.prevEnterdVerb.Form2 = getInput(2);
+        ivt.prevEnterdVerb.Form3 = getInput(3);
     }
     ivt.goToNextVerb = goToNextVerb;
 
@@ -543,17 +567,21 @@ var ivt;
 
     function getResultsTableRow(no, verb) {
         var icon = 'check';
+        var ichar = ivt.charCheck;
         var color = 'darkgreen';
 
         if (verb.Errors > 1) {
             icon = 'alert';
             color = 'maroon';
+            ichar = "!!!"; //ivt.charError;
         } else if (verb.Errors > 0) {
             icon = 'edit';
             color = 'darkorange';
+            ichar = ivt.charRepeat;
         }
 
-        var iconEl = ' <span class="ui-icon ui-icon-' + icon + ' ui-icon-shadow" style="background-color:' + color + ';">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp; ';
+        //var iconEl = ' <span class="ui-icon ui-icon-' + icon + ' ui-icon-shadow" style="background-color:' + color + ';">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp; ';
+        var iconEl = ' <span style="color:' + color + '; font-weight: bold;">' + ichar + '</span>&nbsp; ';
 
         return "<tr>" + "<th>" + no + "</th>" + "<td><strong style='color: " + color + "'>" + verb.Form1 + "</strong></td>" + "<td>" + iconEl + verb.Errors + "</td>" + "<td>" + verb.ValidAnswers + "</td>" + "<td>" + verb.Answers + "</td>" + "<td>" + verb.Repetitions + "</td>" + "</tr> \r\n";
     }

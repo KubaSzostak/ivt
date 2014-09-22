@@ -10,7 +10,7 @@ http://kubaszostak.github.io/ivt/
 
 ## Mobile devices
 
-Want to use it as native app on Your device without internet connection? Download the [Android / Windows Phone / webOS / symbian](https://build.phonegap.com/apps/510981/share) app. 
+Want to use it as native app on Your device without internet connection? Download the [Android / Windows Phone](https://build.phonegap.com/apps/510981/share) app. 
 
 
 

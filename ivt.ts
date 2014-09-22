@@ -31,7 +31,7 @@ module ivt {
 
     export module Verbs {
 
-        function getVerb(verbForms: string): ivt.VerbInfo {
+        export function getVerb(verbForms: string): ivt.VerbInfo {
             var forms = verbForms.split('	');
             var v = new ivt.VerbInfo();
             v.Form1 = forms[0].trim();
@@ -387,11 +387,20 @@ module ivt {
     export module ui {
     }
 
+    export var prevEnterdVerb: ivt.VerbInfo = ivt.Verbs.getVerb("f1	f2	f3	native"); // dummmy but initialized value
     export var currentVerb: number = 0;
     export var verbsToLearn: number = 30;
     export var repeatIncorrectVerbAfter: number = 3;
     export var verbsIncorrect: number;
     export var verbsCorrect: number;
+
+    export var charCheck = "&#10003;";
+    export var charError = "&times;"; // ×
+    export var charRepeat = "&raquo;"; // »
+    export var charDots = "&hellip;"; // … &mldr;
+
+ 
+
 
 
     var selectedVerbList: ivt.VerbInfo[];
@@ -412,14 +421,14 @@ module ivt {
         var verb = learnVerbList[ivt.currentVerb];
         var vInfos = new Array();
         if (verb.ValidAnswers > 0) {
-            vInfos.push('<span style="color:DarkGreen;">&#10003; ' + verb.ValidAnswers + '</span>');
+            vInfos.push('<span style="color:DarkGreen;">' + charCheck + ' ' + verb.ValidAnswers + '</span>');
         }
         if (verb.Errors > 0) {
-            vInfos.push('<span style="color:maroon;">&times; ' + verb.Errors + '</span>');
+            vInfos.push('<span style="color:maroon;">' + charError + ' ' + verb.Errors + '</span>');
         }
         var repLeft = verb.Repetitions - verb.ValidAnswers;
         if (repLeft >= 0) {
-            vInfos.push('<span style="color:black;">&raquo; ' + (repLeft + 1) + '</span>');
+            vInfos.push('<span style="color:black;">' + charRepeat + ' ' + (repLeft + 1) + '</span>');
         }
 
         var sep = '<span style="font-size:small; color:silver;"> | </span>';
@@ -430,6 +439,8 @@ module ivt {
             jQuery("#verbInfo").text("");
         }
     }
+
+
 
     function clearAnswers() {
         jQuery("#verbForm1Box").val("").attr("placeholder", "").closest('div').css("background-color", "");
@@ -460,6 +471,10 @@ module ivt {
     }
 
 
+    function getInput(formNo: number) {
+        var boxElem = jQuery("#" + "verbForm" + formNo + "Box");
+        return boxElem.val();
+    }
 
     function imputIsValid(validVerb: string, formNo: number): boolean {
         var boxElem = jQuery("#" + "verbForm" + formNo + "Box");
@@ -507,6 +522,7 @@ module ivt {
         jQuery.mobile.changePage("#results", { transition: "slide", changeHash: false });
     }
 
+
     export function goToNextVerb() {
         var verb = learnVerbList[ivt.currentVerb];
         verb.Answers += 1;
@@ -516,6 +532,7 @@ module ivt {
             ivt.verbsCorrect++;
             verb.ValidAnswers += 1
             ivt.currentVerb++;
+
 
             clearAnswers();
             if (ivt.currentVerb > learnVerbList.length - 1) {
@@ -527,19 +544,32 @@ module ivt {
             }
         }
         else {
+
+            if ((ivt.prevEnterdVerb != null) && (ivt.prevEnterdVerb.Form1 == getInput(1)) && (ivt.prevEnterdVerb.Form2 == getInput(2)) && (ivt.prevEnterdVerb.Form3 == getInput(3))) {
+                return; //Enter pressed twice -> no change in wrong answer
+            }
             ivt.verbsIncorrect++;
-            verb.Repetitions += 2;
             verb.Errors += 1;
 
             var pos = ivt.currentVerb + repeatIncorrectVerbAfter;
             if (pos > learnVerbList.length)
                 pos = learnVerbList.length;
             var cv = learnVerbList[ivt.currentVerb];
-            learnVerbList.splice(pos, 0, cv);  // Powtórz za chwilę
-            learnVerbList.push(cv); // i na końcu
+
+            if ((pos < learnVerbList.length) && (learnVerbList[pos].Form1 != cv.Form1)) {
+                learnVerbList.splice(pos, 0, cv);  // Powtórz za chwilę
+                verb.Repetitions++;
+            }
+            if (learnVerbList[learnVerbList.length - 1].Form1 != cv.Form1) {
+                learnVerbList.push(cv); // i na końcu
+                verb.Repetitions++;
+            }
 
             updateProgressView();
         }
+        ivt.prevEnterdVerb.Form1 = getInput(1);
+        ivt.prevEnterdVerb.Form2 = getInput(2);
+        ivt.prevEnterdVerb.Form3 = getInput(3);
     }
 
     function updateVerbsTable() {
@@ -570,18 +600,22 @@ module ivt {
     function getResultsTableRow(no: number, verb: ivt.VerbInfo) {
 
         var icon = 'check';
+        var ichar = ivt.charCheck;
         var color = 'darkgreen';
 
         if (verb.Errors > 1) {
             icon = 'alert';
             color = 'maroon';
+            ichar = "!!!"; //ivt.charError;
         }
         else if (verb.Errors > 0) {
             icon = 'edit';
             color = 'darkorange';
+            ichar = ivt.charRepeat;
         }
 
-        var iconEl = ' <span class="ui-icon ui-icon-' + icon + ' ui-icon-shadow" style="background-color:' + color +';">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp; ';
+        //var iconEl = ' <span class="ui-icon ui-icon-' + icon + ' ui-icon-shadow" style="background-color:' + color + ';">&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp; ';
+        var iconEl = ' <span style="color:' + color + '; font-weight: bold;">' + ichar +'</span>&nbsp; ';
 
         return "<tr>"
             + "<th>" + no + "</th>"
