@@ -97,7 +97,7 @@ module ivt {
             res.push(getVerb("lend	lent	lent	pożyczać komuś"));
             res.push(getVerb("let	let	let	pozwalać"));
             res.push(getVerb("lie	lay	lain	leżeć"));
-            res.push(getVerb("light	lit	lighted	zapalać, podpalać"));
+            res.push(getVerb("light	lit	lit	zapalać, podpalać"));
             res.push(getVerb("lose	lost	lost	gubic, tracić"));
             res.push(getVerb("make	made	made	robić"));
             res.push(getVerb("mean	mean	meant	znaczyć"));
@@ -237,7 +237,7 @@ module ivt {
             res.push(getVerb("forget	forgot	forgotten	zapominać"));
             res.push(getVerb("forgive	forgave	forgiven	wybaczać"));
             res.push(getVerb("give	gave	given	dawać"));
-            res.push(getVerb("light	lit	lighted	zapalać, podpalać"));
+            res.push(getVerb("light	lit	lit	zapalać, podpalać"));
             res.push(getVerb("ride	rode	ridden	jeździć (na czymś)"));
             res.push(getVerb("rise	rose	risen	rosnąć"));
             res.push(getVerb("show	showed	shown	pokazywać"));
@@ -280,7 +280,7 @@ module ivt {
             res.push(getVerb("have	had	had	mieć"));
             res.push(getVerb("know	knew	known	znać, wiedzieć"));
             res.push(getVerb("lie	lay	lain	leżeć"));
-            res.push(getVerb("light	lit	lighted	zapalać, podpalać"));
+            res.push(getVerb("light	lit	lit	zapalać, podpalać"));
             res.push(getVerb("mean	mean	meant	znaczyć"));
             res.push(getVerb("must/have to	had to	had to	musieć"));
             res.push(getVerb("ride	rode	ridden	jeździć (na czymś)"));
